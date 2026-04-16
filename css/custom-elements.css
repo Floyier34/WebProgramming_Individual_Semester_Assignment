@@ -1,0 +1,376 @@
+/* ==========================================================================
+   //TODO: Custom Elements - Updated for purple-blue theme
+   ========================================================================== */
+
+/* //TODO: Device card link colors - purple theme */
+.device-card-image-link {
+    display: block;
+    border-radius: var(--pb-radius, 12px) var(--pb-radius, 12px) 0 0;
+    overflow: hidden;
+}
+.device-card-name-link {
+    text-decoration: none;
+    color: var(--pb-primary, #800080) !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.device-card-name-link:hover {
+    color: var(--pb-primary-hover, #7b2cbf) !important;
+}
+
+/* //TODO: Device price - purple accent */
+.device-price {
+    font-weight: 700 !important;
+    margin-bottom: 0.25rem !important;
+    color: var(--pb-primary-dark, #5a0057);
+    font-size: 1.15rem;
+}
+
+.device-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* //TODO: Main content layout - sidebar pinned right, device grid fills remaining space */
+.main-content-wrapper {
+    display: flex;
+    padding-top: 1rem !important;
+    align-items: flex-start;
+}
+.main-device-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* //TODO: Empty state card - glass effect, full width in flex container */
+.empty-state-card {
+    text-align: center !important;
+    padding: 3rem !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(8px);
+    border-radius: var(--pb-radius, 12px) !important;
+    border: 1px solid rgba(209, 196, 255, 0.4) !important;
+    width: 100%;
+    flex-basis: 100%;
+}
+
+/* //TODO: Location items */
+.location-item-name {
+    font-weight: 600 !important;
+    color: var(--pb-primary-dark, #5a0057);
+}
+.location-item-address {
+    color: #777 !important;
+}
+
+/* //TODO: Map container */
+.map-iframe-container {
+    display: flex;
+    flex-direction: column;
+}
+.map-iframe-element {
+    width: 100%;
+    flex-grow: 1;
+    border-radius: var(--pb-radius, 12px);
+    border: 2px solid var(--pb-lavender, #d1c4ff);
+    box-shadow: 0 4px 15px rgba(128, 0, 128, 0.1);
+}
+
+/* ==========================================================================
+   //TODO: Footer elements - purple-blue palette
+   ========================================================================== */
+.footer-section-heading {
+    color: #ffffff !important;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* //TODO: Decorative underline for footer headings */
+.footer-section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--pb-lavender, #d1c4ff);
+    border-radius: 1px;
+}
+
+.footer-text-content {
+    color: var(--pb-text-on-dark, #f5e9ff) !important;
+}
+.footer-link-list {
+}
+.footer-link-item {
+    color: var(--pb-text-on-dark, #f5e9ff) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* //TODO: Footer link hover - slide-right effect */
+.footer-link-item:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    padding-left: 4px;
+}
+
+.footer-contact-detail {
+    display: flex !important;
+}
+.footer-contact-icon {
+    color: var(--pb-lavender, #d1c4ff) !important;
+}
+
+/* //TODO: Footer bottom bar - purple border */
+.footer-bottom-bar {
+    border-top: 1px solid rgba(209, 196, 255, 0.3) !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    margin-top: 1rem;
+}
+.footer-copyright-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+}
+@media (min-width: 768px) {
+    .footer-copyright-info {
+        flex-direction: row !important;
+    }
+}
+.footer-copyright-text {
+    color: var(--pb-text-on-dark, #f5e9ff) !important;
+}
+
+/* ==========================================================================
+   //TODO: Contact page - purple-blue theme
+   ========================================================================== */
+.contact-page-header {
+    text-align: center !important;
+    margin-bottom: 3rem !important;
+}
+
+/* //TODO: Contact info cards - glass effect with purple icon */
+.contact-info-card {
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: 1rem !important;
+    padding: 1.25rem !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px);
+    border-radius: var(--pb-radius, 12px) !important;
+    border: 1px solid rgba(209, 196, 255, 0.4) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* //TODO: Contact card hover effect */
+.contact-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(128, 0, 128, 0.12);
+}
+
+.contact-info-icon {
+    font-size: 1.5rem !important;
+    color: var(--pb-primary, #800080) !important;
+    margin-right: 0.75rem !important;
+}
+.contact-info-heading {
+    margin-bottom: 0.25rem !important;
+    font-weight: 600;
+    color: var(--pb-primary-dark, #5a0057);
+}
+.contact-info-text {
+    color: #666 !important;
+    margin-bottom: 0 !important;
+}
+.contact-email-link {
+    text-decoration: none !important;
+    color: var(--pb-primary, #800080) !important;
+    transition: color 0.3s ease;
+}
+.contact-email-link:hover {
+    color: var(--pb-primary-hover, #7b2cbf) !important;
+}
+
+/* //TODO: Contact form wrapper - glass effect */
+.contact-form-wrapper {
+    padding: 2rem !important;
+    border: 1px solid rgba(209, 196, 255, 0.4) !important;
+    border-radius: var(--pb-radius, 12px) !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(128, 0, 128, 0.08);
+}
+
+/* ==========================================================================
+   //TODO: Device detail page - purple accents
+   ========================================================================== */
+.device-detail-image-wrapper {
+}
+.device-detail-info-wrapper {
+}
+.device-detail-price {
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--pb-primary-dark, #5a0057) !important;
+}
+.device-detail-meta-item {
+    color: #666 !important;
+}
+.device-detail-meta-item.mb-1 {
+    margin-bottom: 0.25rem !important;
+}
+.device-detail-meta-item.mb-3 {
+    margin-bottom: 1rem !important;
+}
+.device-detail-description {
+}
+.device-detail-locations-section {
+    margin-bottom: 1rem !important;
+}
+.device-detail-location-label {
+    color: var(--pb-primary, #800080) !important;
+    display: block !important;
+    font-weight: 600;
+    font-size: 0.9rem !important;
+}
+.device-detail-locations-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.9rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* //TODO: Location list link colors */
+.device-detail-locations-list a {
+    color: var(--pb-primary, #800080);
+    text-decoration: none;
+    font-weight: 500;
+}
+.device-detail-locations-list a:hover {
+    color: var(--pb-primary-hover, #7b2cbf);
+    text-decoration: underline;
+}
+
+.device-detail-actions {
+    display: flex !important;
+    gap: 0.5rem !important;
+}
+
+/* //TODO: Device main image - purple border glow */
+.device-main-image {
+    border: 2px solid var(--pb-lavender, #d1c4ff);
+    box-shadow: 0 4px 20px rgba(128, 0, 128, 0.1);
+}
+
+/* ==========================================================================
+   //TODO: Admin table - purple theme
+   ========================================================================== */
+.admin-table {
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(128, 0, 128, 0.1) !important;
+    border-radius: var(--pb-radius, 12px) !important;
+    overflow: hidden;
+}
+.admin-device-link {
+    color: var(--pb-primary, #800080) !important;
+    display: block !important;
+    text-align: center !important;
+    font-weight: 500;
+    text-decoration: none;
+}
+.admin-device-link:hover {
+    color: var(--pb-primary-hover, #7b2cbf) !important;
+}
+
+/* ==========================================================================
+   //TODO: Login/Register page containers (shared by forgot-password etc.)
+   ========================================================================== */
+.login-register-page-container {
+    width: 450px;
+    height: auto;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+.login-register-page-container.new-password {
+    min-height: 450px;
+}
+.login-register-page-container.password-changed {
+    min-height: 300px;
+}
+.login-register-form-wrapper {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+    opacity: 1;
+    visibility: visible;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--pb-radius, 12px);
+    box-shadow: 0 8px 30px rgba(128, 0, 128, 0.12);
+}
+.login-register-heading {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--pb-primary-dark, #5a0057);
+    font-weight: 700;
+}
+.login-register-description {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.login-register-message-box {
+    padding: 10px;
+    border-radius: var(--pb-radius-sm, 8px);
+    margin-bottom: 15px;
+    text-align: center;
+}
+.login-register-message-box.error-message {
+    background: #f8d7da;
+    color: #721c24;
+}
+.login-register-message-box.success-message {
+    background: #d4edda;
+    color: #155724;
+}
+.login-register-back-link {
+    margin-top: 20px;
+    text-align: center;
+}
+.login-register-back-link a {
+    color: var(--pb-primary, #800080);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.login-register-back-link a:hover {
+    color: var(--pb-primary-hover, #7b2cbf);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   //TODO: Device location label in cards
+   ========================================================================== */
+.device-location-label {
+    color: var(--pb-primary, #800080);
+    font-weight: 600;
+}
+
+.device-locations-list a {
+    color: var(--pb-primary, #800080);
+    font-weight: 500;
+}
+.device-locations-list a:hover {
+    color: var(--pb-primary-hover, #7b2cbf);
+}

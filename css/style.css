@@ -1,0 +1,638 @@
+/* ==========================================================================
+   //TODO: Purple-Blue Theme - Global Design System
+   Matches the login form's purple-blue palette for a cohesive look.
+   Uses CSS custom properties + Bootstrap 5 hybrid approach.
+   ========================================================================== */
+
+/* //TODO: Import Poppins font to match login form typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* //TODO: Define purple-blue design tokens as CSS custom properties */
+:root {
+	--pb-primary: #800080;
+	--pb-primary-hover: #7b2cbf;
+	--pb-primary-light: #9d4edd;
+	--pb-primary-dark: #5a0057;
+	--pb-accent: #7494ec;
+	--pb-accent-light: #c9d6ff;
+	--pb-lavender: #d1c4ff;
+	--pb-soft-purple: #f5e9ff;
+	--pb-text-on-dark: #f5e9ff;
+	--pb-white: #ffffff;
+	--pb-dark: #1a0a2e;
+	--pb-body-bg: #f0ecf7;
+	--pb-card-shadow: rgba(128, 0, 128, 0.12);
+	--pb-card-shadow-hover: rgba(128, 0, 128, 0.25);
+	--pb-gradient-navbar: linear-gradient(135deg, #5a0057 0%, #7b2cbf 50%, #5c6bc0 100%);
+	--pb-gradient-footer: linear-gradient(135deg, #2d0049 0%, #5a0057 40%, #4a148c 100%);
+	--pb-gradient-body: linear-gradient(-45deg, #e8e0f0, #c9d6ff, #d1c4ff, #e8e0f0);
+	--pb-radius: 12px;
+	--pb-radius-sm: 8px;
+	--pb-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* //TODO: Apply Poppins font and animated gradient background site-wide */
+html {
+	overflow-y: scroll;
+}
+
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+/* //TODO: Static purple-blue background instead of animated gradient */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: #e8e0f0;
+	color: #2d2d2d;
+}
+
+/* //TODO: White content container - center column with side spaces for ads */
+body > .container {
+	background: #ede8f5;
+	box-shadow: 0 0 30px rgba(128, 0, 128, 0.08);
+	padding-bottom: 2rem;
+	flex: 1;
+}
+
+/* ==========================================================================
+   //TODO: Navbar - Purple gradient with glassmorphism
+   ========================================================================== */
+.store-navbar-purple {
+	background: var(--pb-gradient-navbar) !important;
+	border: none !important;
+	border-radius: 0 0 var(--pb-radius) var(--pb-radius);
+	box-shadow: 0 4px 20px rgba(90, 0, 87, 0.3);
+	padding: 0.6rem 1rem;
+	backdrop-filter: blur(10px);
+}
+
+.store-navbar-purple .navbar-brand {
+	color: var(--pb-white) !important;
+	font-weight: 700;
+	font-size: 1.3rem;
+	letter-spacing: 0.02em;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.store-navbar-purple .nav-link {
+	color: rgba(255, 255, 255, 0.85) !important;
+	font-weight: 500;
+	font-size: 0.95rem;
+	padding: 0.5rem 1rem !important;
+	border-radius: var(--pb-radius-sm);
+	transition: var(--pb-transition);
+	position: relative;
+}
+
+.store-navbar-purple .nav-link:hover,
+.store-navbar-purple .nav-link.active {
+	color: var(--pb-white) !important;
+	background: rgba(255, 255, 255, 0.15);
+	text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.store-navbar-purple .nav-link.active::after {
+	content: '';
+	position: absolute;
+	bottom: 2px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 3px;
+	background: var(--pb-white);
+	border-radius: 2px;
+}
+
+.store-navbar-purple .navbar-toggler {
+	border-color: rgba(255,255,255,0.3) !important;
+}
+
+.store-navbar-purple .navbar-toggler-icon {
+	filter: brightness(0) invert(1);
+}
+
+.store-navbar-purple .dropdown-menu {
+	background: var(--pb-white);
+	border: 1px solid var(--pb-lavender);
+	border-radius: var(--pb-radius-sm);
+	box-shadow: 0 8px 25px rgba(128, 0, 128, 0.15);
+}
+
+.store-navbar-purple .dropdown-item {
+	color: var(--pb-dark) !important;
+	font-weight: 500;
+	transition: var(--pb-transition);
+}
+
+.store-navbar-purple .dropdown-item:hover {
+	background: var(--pb-soft-purple);
+	color: var(--pb-primary) !important;
+}
+
+/* ==========================================================================
+   //TODO: Breadcrumbs - Purple accent, z-index fix for dropdown overlap
+   ========================================================================== */
+.breadcrumb {
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(8px);
+	padding: 0.75rem 1.25rem !important;
+	border-radius: var(--pb-radius-sm) !important;
+	border: 1px solid rgba(209, 196, 255, 0.4);
+	position: relative;
+	z-index: 0;
+}
+
+.breadcrumb-item a {
+	color: var(--pb-primary) !important;
+	text-decoration: none;
+	font-weight: 500;
+	transition: var(--pb-transition);
+}
+
+.breadcrumb-item a:hover {
+	color: var(--pb-primary-hover) !important;
+	text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+	color: #666 !important;
+	font-weight: 500;
+}
+
+/* ==========================================================================
+   //TODO: Cards - Purple-tinted shadows and hover lift
+   ========================================================================== */
+.card {
+	width: 18rem;
+	border: 1px solid rgba(209, 196, 255, 0.5);
+	border-radius: var(--pb-radius) !important;
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(6px);
+	box-shadow: 0 4px 15px var(--pb-card-shadow);
+	transition: transform var(--pb-transition), box-shadow var(--pb-transition);
+	overflow: hidden;
+}
+
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 12px 30px var(--pb-card-shadow-hover);
+}
+
+.card .card-img-top {
+	border-bottom: 2px solid var(--pb-soft-purple);
+	transition: var(--pb-transition);
+}
+
+.card:hover .card-img-top {
+	opacity: 0.92;
+}
+
+.card .card-body {
+	padding: 1.1rem;
+}
+
+.card .card-title {
+	font-weight: 600;
+	font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   //TODO: Buttons - Override Bootstrap primary to purple
+   ========================================================================== */
+.btn-primary {
+	background: var(--pb-primary) !important;
+	border-color: var(--pb-primary) !important;
+	color: var(--pb-white) !important;
+	font-weight: 600;
+	border-radius: var(--pb-radius-sm);
+	transition: var(--pb-transition);
+	box-shadow: 0 2px 10px rgba(128, 0, 128, 0.2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+	background: var(--pb-primary-hover) !important;
+	border-color: var(--pb-primary-hover) !important;
+	box-shadow: 0 4px 15px rgba(123, 44, 191, 0.35) !important;
+	transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+	color: var(--pb-primary) !important;
+	border-color: var(--pb-primary) !important;
+	font-weight: 600;
+	border-radius: var(--pb-radius-sm);
+	transition: var(--pb-transition);
+}
+
+.btn-outline-primary:hover {
+	background: var(--pb-primary) !important;
+	border-color: var(--pb-primary) !important;
+	color: var(--pb-white) !important;
+	box-shadow: 0 4px 15px rgba(128, 0, 128, 0.25);
+}
+
+.btn-outline-secondary {
+	border-color: var(--pb-lavender) !important;
+	color: var(--pb-primary-dark) !important;
+	font-weight: 500;
+	border-radius: var(--pb-radius-sm);
+	transition: var(--pb-transition);
+}
+
+.btn-outline-secondary:hover {
+	background: var(--pb-soft-purple) !important;
+	border-color: var(--pb-primary-light) !important;
+	color: var(--pb-primary) !important;
+}
+
+.btn-success {
+	background: linear-gradient(135deg, #6a1b9a, #7b2cbf) !important;
+	border: none !important;
+	font-weight: 600;
+	border-radius: var(--pb-radius-sm);
+	box-shadow: 0 2px 10px rgba(106, 27, 154, 0.3);
+	transition: var(--pb-transition);
+}
+
+.btn-success:hover {
+	background: linear-gradient(135deg, #7b2cbf, #9c27b0) !important;
+	box-shadow: 0 4px 15px rgba(123, 44, 191, 0.35);
+	transform: translateY(-1px);
+}
+
+.btn-warning {
+	background: linear-gradient(135deg, #ff8f00, #ffa726) !important;
+	border: none !important;
+	color: #fff !important;
+	font-weight: 600;
+	border-radius: var(--pb-radius-sm);
+	transition: var(--pb-transition);
+}
+
+.btn-warning:hover {
+	box-shadow: 0 4px 12px rgba(255, 143, 0, 0.35);
+	transform: translateY(-1px);
+}
+
+.btn-danger {
+	border-radius: var(--pb-radius-sm);
+	font-weight: 600;
+	transition: var(--pb-transition);
+}
+
+.btn-danger:hover {
+	box-shadow: 0 4px 12px rgba(220, 53, 69, 0.35);
+	transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   //TODO: Form Controls - Purple focus ring
+   ========================================================================== */
+.form-control:focus,
+.form-select:focus {
+	border-color: var(--pb-accent) !important;
+	box-shadow: 0 0 0 0.2rem rgba(116, 148, 236, 0.35) !important;
+}
+
+.form-control,
+.form-select {
+	border-radius: var(--pb-radius-sm);
+	border: 1px solid rgba(209, 196, 255, 0.6);
+	transition: var(--pb-transition);
+}
+
+.form-label {
+	font-weight: 500;
+	color: var(--pb-primary-dark);
+}
+
+/* //TODO: Search bar input-group styling */
+.input-group .form-control {
+	border-right: none;
+}
+
+.input-group .btn-primary,
+.input-group .input-group-text.btn-primary {
+	border-left: none;
+}
+
+/* ==========================================================================
+   //TODO: Pagination - Purple active state
+   ========================================================================== */
+.pagination .page-link {
+	color: var(--pb-primary);
+	border-color: var(--pb-lavender);
+	font-weight: 500;
+	border-radius: var(--pb-radius-sm) !important;
+	margin: 0 2px;
+	transition: var(--pb-transition);
+}
+
+.pagination .page-link:hover {
+	background: var(--pb-soft-purple);
+	border-color: var(--pb-primary-light);
+	color: var(--pb-primary);
+}
+
+.pagination .page-item.active .page-link {
+	background: var(--pb-primary) !important;
+	border-color: var(--pb-primary) !important;
+	color: var(--pb-white);
+	box-shadow: 0 2px 8px rgba(128, 0, 128, 0.3);
+}
+
+.pagination .page-item.disabled .page-link {
+	color: #aaa;
+	border-color: #e0d8f0;
+}
+
+/* ==========================================================================
+   //TODO: List Group / Sidebar - Purple active state
+   ========================================================================== */
+.list-group-item-action.active {
+	background: var(--pb-primary) !important;
+	border-color: var(--pb-primary) !important;
+	color: var(--pb-white) !important;
+	font-weight: 600;
+}
+
+.list-group-item-action:not(.active) {
+	color: var(--pb-primary-dark);
+	border-color: rgba(209, 196, 255, 0.4);
+	transition: var(--pb-transition);
+}
+
+.list-group-item-action:not(.active):hover {
+	background: var(--pb-soft-purple);
+	color: var(--pb-primary);
+	border-color: var(--pb-lavender);
+}
+
+/* ==========================================================================
+   //TODO: Layout helpers
+   ========================================================================== */
+.pdf-list {
+	flex: 1;
+	gap: 1.5rem;
+}
+
+/* //TODO: Category sidebar - fixed width, pinned to right edge */
+.category {
+	margin-left: 2rem;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 200px;
+	width: 200px;
+}
+
+.category .list-group {
+	width: 200px;
+}
+
+.nd {
+	text-decoration: none;
+}
+
+.location-list a {
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   //TODO: Footer - Deep purple gradient
+   ========================================================================== */
+.store-footer {
+	margin-top: auto;
+	background: var(--pb-gradient-footer);
+	color: var(--pb-text-on-dark);
+	padding: 2.5rem 0 0;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+/* //TODO: Decorative glow at the top of footer */
+.store-footer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60%;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--pb-lavender), transparent);
+}
+
+.store-footer .footer-title {
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+.store-footer a {
+	color: var(--pb-text-on-dark);
+	text-decoration: none;
+	transition: var(--pb-transition);
+}
+
+.store-footer a:hover {
+	color: var(--pb-white);
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   //TODO: Admin table styling
+   ========================================================================== */
+.action-col {
+	width: 170px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+/* ==========================================================================
+   //TODO: Alert boxes - Softer styling
+   ========================================================================== */
+.alert-warning {
+	background: rgba(255, 243, 205, 0.8);
+	backdrop-filter: blur(6px);
+	border-color: rgba(255, 193, 7, 0.3);
+	border-radius: var(--pb-radius-sm);
+}
+
+.alert-success {
+	border-radius: var(--pb-radius-sm);
+}
+
+.alert-danger {
+	border-radius: var(--pb-radius-sm);
+}
+
+/* ==========================================================================
+   //TODO: Page titles - Purple gradient text
+   ========================================================================== */
+.display-4,
+.display-5 {
+	font-weight: 700 !important;
+	color: var(--pb-primary-dark);
+}
+
+h4 {
+	color: var(--pb-primary-dark);
+	font-weight: 600;
+}
+
+/* ==========================================================================
+   //TODO: Table styling for admin
+   ========================================================================== */
+/* //TODO: Admin tables - white background, column borders, synced widths */
+.table {
+	border-radius: var(--pb-radius-sm);
+	overflow: hidden;
+	background: #ffffff;
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table thead {
+	background: var(--pb-gradient-navbar);
+	color: white;
+}
+
+.table thead th {
+	font-weight: 600;
+	padding: 0.85rem;
+	color: white !important;
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	vertical-align: middle;
+}
+
+.table thead th:last-child {
+	border-right: none;
+}
+
+/* //TODO: Table body cells - white bg with purple column borders */
+.table tbody td {
+	background: #ffffff;
+	border-right: 1px solid rgba(209, 196, 255, 0.4);
+	border-bottom: 1px solid rgba(209, 196, 255, 0.3);
+	padding: 0.75rem;
+	vertical-align: middle;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+.table tbody td:last-child {
+	border-right: none;
+}
+
+.table tbody tr {
+	transition: var(--pb-transition);
+}
+
+.table tbody tr:hover td {
+	background: var(--pb-soft-purple);
+}
+
+/* ==========================================================================
+   //TODO: Scrollbar styling
+   ========================================================================== */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--pb-soft-purple);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--pb-lavender);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--pb-primary-light);
+}
+
+/* ==========================================================================
+   //TODO: Responsive adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+	.store-navbar-purple {
+		border-radius: 0;
+	}
+
+	.category {
+		margin-left: 0;
+		margin-top: 1.5rem;
+	}
+
+	.category .list-group {
+		width: 100%;
+	}
+}
+
+/* ==========================================================================
+   //TODO: White form inputs - clear white background for all form fields
+   ========================================================================== */
+.form-control,
+.form-select,
+textarea.form-control {
+	background-color: #ffffff !important;
+	color: #333 !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+	background-color: #ffffff !important;
+}
+
+/* ==========================================================================
+   //TODO: Admin form cards - white background with purple shadow
+   ========================================================================== */
+.shadow.p-4.rounded {
+	background: #ffffff !important;
+	border: 1px solid rgba(209, 196, 255, 0.4);
+	border-radius: var(--pb-radius) !important;
+	box-shadow: 0 4px 15px var(--pb-card-shadow) !important;
+}
+
+/* ==========================================================================
+   //TODO: About page - location list text color fix
+   When active (purple bg), text must be white; inactive must be dark
+   ========================================================================== */
+.list-group-item-action.active .location-item-name {
+	color: #ffffff !important;
+}
+
+.list-group-item-action.active .location-item-address {
+	color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.list-group-item-action.active .location-item-icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.list-group-item-action:not(.active) .location-item-name {
+	color: var(--pb-primary-dark, #5a0057) !important;
+}
+
+.list-group-item-action:not(.active) .location-item-address {
+	color: #777 !important;
+}
+
+/* ==========================================================================
+   //TODO: Navbar z-index - ensure dropdown sits above breadcrumbs
+   ========================================================================== */
+.store-navbar-purple {
+	position: relative;
+	z-index: 10;
+}
+
+.store-navbar-purple .dropdown-menu {
+	z-index: 1050;
+}
