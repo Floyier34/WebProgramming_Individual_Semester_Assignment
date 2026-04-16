@@ -46,7 +46,7 @@ You can test the application using the following credentials, or you can registe
 
 ---
 
-## Reference Source (Original Project Information)
+## Reference Sources (Original Project Information and Links)
 
 # Online Book Store - Full PHP & MYSQL Project
 
@@ -67,3 +67,23 @@ version: 1.0.0
 ## Authors
 
 [Elias Abdurrahman](https://github.com/codingWithElias)
+
+---
+
+# Login-Register Complete Integration Guide (Fullstack PHP & MySQL)
+
+**Note:** Both the original Online Store project and the Login-Register system were adapted from tutorials by the YouTube channel **Codehal**.
+
+## Frontend design: [On Youtube](https://youtu.be/Z_AbWH-Vyl8?si=DBRBY42EIB-XdncA)
+
+## Backend design: [On Youtube](https://youtu.be/LiomRvK7AM8?si=OKOG2g6TOzFLJ6nG)
+
+## Overview 
+
+This guide details the integration of a standalone Login & Registration system into the main Electronics Store web application. The new authentication system completely replaces the previous basic login mechanism, unifying both user and admin login processes under a single, seamless interface with animated toggles for login and registration.
+
+Key integrations include:
+*   **Unified Database:** Transitioned from separate databases to a centralized `users` table within the main `online_electronics_store_db`.
+*   **Role-Based Routing:** A single login portal now securely directs standard users to the storefront and administrators to the management dashboard.
+*   **Persistent Sessions:** Secure session management handles user state dynamically across the entire application, updating navigation links dynamically.
+*   **Modern UI Integration:** The stylish dual-form authentication design was seamlessly incorporated into the store's public directory, significantly upgrading the overall user experience.
