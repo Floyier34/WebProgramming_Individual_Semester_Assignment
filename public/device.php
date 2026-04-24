@@ -35,13 +35,51 @@ $locations = get_locations_for_device($device['id']);
 
 $page_title = htmlspecialchars($device['name']);
 $active_page = 'store';
+
+// Prepare variables for dynamic SEO
+$seo_title = htmlspecialchars($device['name']) . " | Online Electronics Store";
+$seo_desc = htmlspecialchars($device['short_description']);
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$base_url = $protocol . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+$seo_image = $base_url . "/../uploads/images/" . htmlspecialchars($device['image']);
+$seo_url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?=htmlspecialchars($page_title)?></title>
+	<title><?= $seo_title ?></title>
+
+    <meta name="description" content="<?= $seo_desc ?>">
+
+    <!-- Dynamic Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="<?= $seo_url ?>">
+    <meta property="og:title" content="<?= $seo_title ?>">
+    <meta property="og:description" content="<?= $seo_desc ?>">
+    <meta property="og:image" content="<?= $seo_image ?>">
+
+    <!-- Dynamic Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= $seo_url ?>">
+    <meta property="twitter:title" content="<?= $seo_title ?>">
+    <meta property="twitter:description" content="<?= $seo_desc ?>">
+    <meta property="twitter:image" content="<?= $seo_image ?>">
+
+    <!-- JSON-LD Product Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "<?= htmlspecialchars($device['name']) ?>",
+      "image": [ "<?= $seo_image ?>" ],
+      "description": "<?= $seo_desc ?>",
+      "sku": "<?= $device['id'] ?>",
+      "brand": { "@type": "Brand", "name": "<?= htmlspecialchars($brand['name'] ?? 'Unknown') ?>" },
+      "offers": { "@type": "Offer", "url": "<?= $seo_url ?>", "priceCurrency": "USD", "price": "<?= number_format((float) $device['price'], 2, '.', '') ?>", "itemCondition": "https://schema.org/NewCondition", "availability": "https://schema.org/InStock" }
+    }
+    </script>
 
     <!-- //TODO: Google Fonts Poppins - matching login form typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">

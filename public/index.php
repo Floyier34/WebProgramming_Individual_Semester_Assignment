@@ -80,6 +80,33 @@ $active_page = 'store';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= htmlspecialchars($page_title) ?></title>
 
+    <!-- Global SEO Meta Tags -->
+    <meta name="description" content="Welcome to the Online Electronics Store. Find the best devices, laptops, phones, and accessories at great prices.">
+    <meta name="keywords" content="electronics, laptops, phones, online store, tech">
+    <meta name="author" content="Online Electronics Store">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?= htmlspecialchars($page_title) ?>">
+    <meta property="og:description" content="Find the best devices, laptops, phones, and accessories at great prices.">
+    <meta property="og:image" content="../img/store-banner.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="<?= htmlspecialchars($page_title) ?>">
+    <meta property="twitter:description" content="Find the best devices, laptops, phones, and accessories at great prices.">
+    <meta property="twitter:image" content="../img/store-banner.jpg">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ElectronicsStore",
+      "name": "Online Electronics Store",
+      "description": "Find the best devices, laptops, phones, and accessories at great prices."
+    }
+    </script>
+
     <!-- //TODO: Google Fonts Poppins - matching login form typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
