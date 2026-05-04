@@ -1,6 +1,7 @@
 <?php 
 session_start();
-// If user is logged in, redirect them
+
+// Guard clause: If user is logged in, redirect them
 if (isset($_SESSION['user_id'])) {
     header('Location: ../public/index.php');
     exit();
@@ -11,21 +12,27 @@ $errors = array();
 
 if(isset($_POST['check-email'])){
     // Using prepared statement to prevent SQL injection
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $check_email_sql = "SELECT email FROM users WHERE email = ?";
     $stmt = $conn->prepare($check_email_sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if($result->num_rows > 0){
-        $_SESSION['verified_email'] = $email;
-        $_SESSION['info'] = "Email verified. Please enter your new password.";
-        header('Location: new-password-reset.php');
-        exit();
-    }else{
+    // Guard clause: Email not found
+    if($result->num_rows === 0){
         $errors['email'] = "This email address does not exist in our system.";
     }
+
+    if (empty($errors)) {
+        $_SESSION['verified_email'] = $email;
+        $_SESSION['info'] = "Email verified. Please enter your new password.";
+        $stmt->close();
+        header('Location: new-password-reset.php');
+        exit();
+    }
+    
+    $stmt->close();
 }
 ?>
 <!DOCTYPE html>

@@ -128,13 +128,13 @@ $sql = "UPDATE devices
 $stmt = $conn->prepare($sql);
 $res  = $stmt->execute([$name, $price, $short_description, $brand, $description, $category, $device_image_URL, $file_URL, $id]);
 
-if ($res) {
-    $sm = "Successfully updated!";
-    header("Location: ../admin/edit-device.php?success=$sm&id=$id");
-    exit;
-} else {
+if (!$res) {
     $em = "Unknown Error Occurred!";
     header("Location: ../admin/edit-device.php?error=$em&id=$id");
     exit;
 }
+
+$sm = "Successfully updated!";
+header("Location: ../admin/edit-device.php?success=$sm&id=$id");
+exit;
 

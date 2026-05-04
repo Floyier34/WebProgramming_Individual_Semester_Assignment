@@ -80,6 +80,10 @@ function render_pagination($page, $total_pages, $id, $sort){
 }
 
 $page_title = htmlspecialchars($current_category['name']);
+$seo_desc = "Explore " . htmlspecialchars($current_category['name']) . " products at Online Electronics Store. Discover top electronics, laptops, phones, accessories, and more in this category.";
+$seo_keywords = "electronics, " . htmlspecialchars($current_category['name']) . ", online store, devices, tech";
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443 ? "https://" : "http://";
+$seo_url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $active_page = 'store';
 ?>
 <!DOCTYPE html>
@@ -88,6 +92,18 @@ $active_page = 'store';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?=htmlspecialchars($page_title)?></title>
+    <meta name="description" content="<?= htmlspecialchars($seo_desc) ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($seo_keywords) ?>">
+    <meta name="author" content="Online Electronics Store">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= htmlspecialchars($seo_url) ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($page_title) ?> | Online Electronics Store">
+    <meta property="og:description" content="<?= htmlspecialchars($seo_desc) ?>">
+    <meta property="og:image" content="../img/store-banner.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="<?= htmlspecialchars($page_title) ?> | Online Electronics Store">
+    <meta property="twitter:description" content="<?= htmlspecialchars($seo_desc) ?>">
+    <meta property="twitter:image" content="../img/store-banner.jpg">
 
     <!-- //TODO: Google Fonts Poppins - matching login form typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">

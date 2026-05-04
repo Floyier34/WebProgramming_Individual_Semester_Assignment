@@ -45,6 +45,17 @@ $active_page = 'cart';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= htmlspecialchars($page_title) ?></title>
+    <meta name="description" content="Complete your purchase at Online Electronics Store. Secure checkout for electronics, laptops, phones, and accessories.">
+    <meta name="keywords" content="buy electronics, checkout, online store, laptops, phones, accessories">
+    <meta name="author" content="Online Electronics Store">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?= htmlspecialchars($page_title) ?> | Online Electronics Store">
+    <meta property="og:description" content="Complete your purchase at Online Electronics Store. Secure checkout for electronics, laptops, phones, and accessories.">
+    <meta property="og:image" content="../img/store-banner.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="<?= htmlspecialchars($page_title) ?> | Online Electronics Store">
+    <meta property="twitter:description" content="Complete your purchase at Online Electronics Store. Secure checkout for electronics, laptops, phones, and accessories.">
+    <meta property="twitter:image" content="../img/store-banner.jpg">
 
     <!-- //TODO: Google Fonts Poppins - matching login form typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">

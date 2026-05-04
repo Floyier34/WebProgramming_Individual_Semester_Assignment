@@ -1,6 +1,7 @@
 <?php 
 session_start();
-// If user is not coming from forgot-password.php, redirect them
+
+// Guard clause: If user is not coming from forgot-password.php, redirect them
 if(!isset($_SESSION['verified_email'])){
     header('Location: ../public/login.php');
     exit();
@@ -14,9 +15,12 @@ if(isset($_POST['change-password'])){
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     
+    // Guard clause: Passwords do not match
     if($password !== $cpassword){
         $errors['password'] = "Passwords do not match!";
-    } else {
+    }
+    
+    if (empty($errors)) {
         $email = $_SESSION['verified_email'];
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         
@@ -25,13 +29,16 @@ if(isset($_POST['change-password'])){
         $stmt = $conn->prepare($update_pass_sql);
         $stmt->bind_param("ss", $hashedPassword, $email);
         
-        if($stmt->execute()){
+        // Guard clause: Execution failed
+        if(!$stmt->execute()){
+            $errors['db-error'] = "Failed to update password. Please try again.";
+            $stmt->close();
+        } else {
             $_SESSION['info'] = "Your password has been changed successfully. You can now login with your new password.";
             unset($_SESSION['verified_email']); // Clean up session
+            $stmt->close();
             header('Location: password-changed.php');
             exit();
-        }else{
-            $errors['db-error'] = "Failed to update password. Please try again.";
         }
     }
 }
