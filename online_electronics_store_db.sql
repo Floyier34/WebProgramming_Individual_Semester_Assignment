@@ -1,11 +1,7 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Sep 26, 2021 at 10:38 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +14,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `online_electronics_store_db`
+-- Cơ sở dữ liệu: `online_electronics_store_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -32,10 +28,10 @@ CREATE TABLE `admin` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Đang đổ dữ liệu cho bảng `admin`
 --
 
 INSERT INTO `admin` (`id`, `full_name`, `email`, `password`) VALUES
@@ -44,34 +40,62 @@ INSERT INTO `admin` (`id`, `full_name`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Cấu trúc bảng cho bảng `brands`
 --
 
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `brands`
+-- Đang đổ dữ liệu cho bảng `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`) VALUES
-(1, 'Aether Mobile'),
-(2, 'NovaCore'),
-(3, 'Lumenix'),
-(4, 'Orbit Labs'),
-(5, 'PulseAudio'),
-(6, 'Vertex Computing'),
-(7, 'Zenith Gear'),
-(8, 'EchoWave'),
-(9, 'TitanForge'),
-(10, 'Skylink');
+(1, 'Lenovo'),
+(2, 'Aether Mobile'),
+(3, 'NovaCore'),
+(4, 'Lumenix'),
+(5, 'Orbit Labs'),
+(6, 'PulseAudio'),
+(7, 'Vertex Computing'),
+(8, 'Zenith Gear'),
+(9, 'EchoWave'),
+(10, 'TitanForge'),
+(11, 'Skylink');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `devices`
+-- Cấu trúc bảng cho bảng `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Laptop'),
+(2, 'Smartphones'),
+(3, 'Tablets'),
+(4, 'Smart Home'),
+(5, 'Audio'),
+(6, 'Wearables'),
+(7, 'Gaming'),
+(8, 'Networking'),
+(9, 'Storage'),
+(10, 'Displays');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `devices`
 --
 
 CREATE TABLE `devices` (
@@ -84,42 +108,14 @@ CREATE TABLE `devices` (
   `category_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Smartphones'),
-(2, 'Laptops'),
-(3, 'Tablets'),
-(4, 'Smart Home'),
-(5, 'Audio'),
-(6, 'Wearables'),
-(7, 'Gaming'),
-(8, 'Networking'),
-(9, 'Storage'),
-(10, 'Displays');
-
---
--- Dumping data for table `devices`
+-- Đang đổ dữ liệu cho bảng `devices`
 --
 
 INSERT INTO `devices` (`id`, `name`, `price`, `short_description`, `brand_id`, `description`, `category_id`, `image`, `file`) VALUES
-(1, 'Aether NovaPhone X2', 799.00, '6.7 inch OLED, 5G, 128GB storage', 1, 'Flagship phone with fast 5G modem, dual camera system, and long battery life for daily use.', 1, 'empty.png', 'empty.png'),
-(2, 'NovaCore Glide S5', 649.00, '6.5 inch AMOLED, 90Hz, 256GB', 2, 'Slim smartphone with smooth 90Hz display, stereo speakers, and fast charging support.', 1, 'empty.png', 'empty.png'),
+(2, 'Lenovo LOQ', 400.00, 'Spec: high end', 1, 'Spec: high end', 1, '69c8a7a140fea2.05530704.jpg', '69c8a7a1417268.68088047.jpg'),
 (3, 'Lumenix Prism Mini', 549.00, '5.8 inch OLED, compact build, 128GB', 3, 'Compact smartphone designed for one hand use with bright display and reliable all day battery.', 1, 'empty.png', 'empty.png'),
 (4, 'Vertex Ultralite 14', 999.00, '14 inch FHD, 16GB RAM, 512GB SSD', 6, 'Lightweight laptop for work and study with efficient processor and quiet cooling.', 2, 'empty.png', 'empty.png'),
 (5, 'Lumenix StudioBook 16', 1799.00, '16 inch QHD, 32GB RAM, 1TB SSD', 3, 'Creator focused laptop with large color accurate display and strong GPU performance.', 2, 'empty.png', 'empty.png'),
@@ -147,63 +143,103 @@ INSERT INTO `devices` (`id`, `name`, `price`, `short_description`, `brand_id`, `
 (27, 'TitanForge IronDrive HDD 4TB', 119.00, '3.5 inch HDD, 7200RPM, 4TB', 9, 'Desktop hard drive offering reliable bulk storage for games and media.', 9, 'empty.png', 'empty.png'),
 (28, 'Lumenix ClearView 27', 329.00, '27 inch IPS, 144Hz, QHD', 3, 'Smooth gaming and work monitor with sharp resolution and vivid colors.', 10, 'empty.png', 'empty.png'),
 (29, 'Vertex EdgeWide 34', 599.00, '34 inch ultrawide, 165Hz, curved', 6, 'Ultrawide curved display built for multitasking and immersive gaming.', 10, 'empty.png', 'empty.png'),
-(30, 'NovaCore PixelPanel 24', 159.00, '24 inch FHD, 75Hz, thin bezel', 2, 'Affordable monitor with thin bezels for dual screen setups.', 10, 'empty.png', 'empty.png');
+(30, 'Aether NovaPhone X2', 799.00, '6.7 inch OLED, 5G, 128GB storage', 1, 'Flagship phone with fast 5G modem, dual camera system, and long battery life for daily use.', 1, 'empty.png', 'empty.png'),
+(31, 'NovaCore Glide S5', 649.00, '6.5 inch AMOLED, 90Hz, 256GB', 2, 'Slim smartphone with smooth 90Hz display, stereo speakers, and fast charging support.', 1, 'empty.png', 'empty.png');
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `reset_code` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `reset_code`) VALUES
+(1, 'Admin User', 'admin@example.com', '$2y$10$Nqq/y251QX2Ccvb1Ax7hUuMqQSkG3yRLCxN2KPdetnSP3oaXVH70a', 'admin', 0),
+(2, 'Tuan', 'tuan24102005@gmail.com', '$2y$10$PgHHZjFu7C7bueCM/.nZ6emppgIZN5htjDBpYLWE.mSVBivmstuXC', 'admin', 0),
+(3, 'Tuan', 'tuan.tranraven621@hcmut.edu.vn', '$2y$10$8K3U4PNqgr00prL8L4xQ8ulElnw50QCKjVRraONmwXxhIZFEtkwme', 'user', 0);
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `brands`
+-- Chỉ mục cho bảng `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `devices`
---
-ALTER TABLE `devices`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Chỉ mục cho bảng `devices`
+--
+ALTER TABLE `devices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `idx_email` (`email`),
+  ADD KEY `idx_role` (`role`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `brands`
+-- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `devices`
---
-ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `devices`
+--
+ALTER TABLE `devices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

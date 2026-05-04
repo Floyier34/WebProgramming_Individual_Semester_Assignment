@@ -34,6 +34,23 @@ $active_page = $active_page ?? '';
              href="about.php">About</a>
         </li>
       </ul>
+      <!-- Navbar Search Bar -->
+      <form action="search.php" method="get" class="d-flex navbar-search-form me-3" role="search" id="navbar-search-form">
+        <div class="input-group input-group-sm">
+          <input type="text"
+                 class="form-control navbar-search-input"
+                 name="key"
+                 id="navbar-search-key"
+                 placeholder="Search products..."
+                 aria-label="Search products"
+                 autocomplete="off">
+          <button class="btn navbar-search-btn" type="submit" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <!-- AJAX live search results dropdown -->
+        <div class="navbar-search-results" id="navbar-search-results"></div>
+      </form>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <?php if (isset($_SESSION['user_id'])) {?>
@@ -60,3 +77,82 @@ $active_page = $active_page ?? '';
     </div>
   </div>
 </nav>
+<!-- Navbar Search AJAX Script -->
+<script>
+(function () {
+  const form = document.getElementById('navbar-search-form');
+  const input = document.getElementById('navbar-search-key');
+  const resultsBox = document.getElementById('navbar-search-results');
+  if (!form || !input || !resultsBox) return;
+
+  let debounceTimer;
+
+  input.addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    const query = input.value.trim();
+    if (query.length < 2) {
+      resultsBox.innerHTML = '';
+      resultsBox.style.display = 'none';
+      return;
+    }
+    debounceTimer = setTimeout(function () {
+      fetch('../php/ajax-search.php?key=' + encodeURIComponent(query) + '&page=1', {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.total === 0) {
+          resultsBox.innerHTML = '<div class="navbar-search-no-result">No results found</div>';
+          resultsBox.style.display = 'block';
+          return;
+        }
+        // Parse the HTML cards to extract device links and names
+        const temp = document.createElement('div');
+        temp.innerHTML = data.html;
+        const cards = temp.querySelectorAll('.card');
+        let html = '';
+        let count = 0;
+        cards.forEach(function (card) {
+          if (count >= 5) return;
+          const link = card.querySelector('.device-card-name-link');
+          const priceEl = card.querySelector('.device-price');
+          if (link) {
+            const name = link.textContent.trim();
+            const href = link.getAttribute('href');
+            const price = priceEl ? priceEl.textContent.trim() : '';
+            html += '<a href="' + href + '" class="navbar-search-result-item">'
+                  + '<span class="navbar-search-result-name">' + name + '</span>'
+                  + '<span class="navbar-search-result-price">' + price + '</span>'
+                  + '</a>';
+            count++;
+          }
+        });
+        if (data.total > 5) {
+          html += '<a href="search.php?key=' + encodeURIComponent(query) + '" class="navbar-search-result-item navbar-search-view-all">'
+                + 'View all ' + data.total + ' results →'
+                + '</a>';
+        }
+        resultsBox.innerHTML = html;
+        resultsBox.style.display = 'block';
+      })
+      .catch(() => {
+        resultsBox.style.display = 'none';
+      });
+    }, 300);
+  });
+
+  // Hide results on click outside
+  document.addEventListener('click', function (e) {
+    if (!form.contains(e.target)) {
+      resultsBox.style.display = 'none';
+    }
+  });
+
+  // Show results on focus if there's content
+  input.addEventListener('focus', function () {
+    if (resultsBox.innerHTML.trim() !== '') {
+      resultsBox.style.display = 'block';
+    }
+  });
+})();
+</script>

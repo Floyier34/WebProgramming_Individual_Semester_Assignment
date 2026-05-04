@@ -41,6 +41,7 @@ if (isset($_POST['email']) &&
 	if ($stmt->rowCount() !== 1) {
 		$em = "Incorrect User name or password";
 		header("Location: ../public/login.php?error=$em");
+		exit;
 	}
 
 	$user = $stmt->fetch();
@@ -52,21 +53,25 @@ if (isset($_POST['email']) &&
 	if ($email !== $user_email) {
 		$em = "Incorrect User name or password";
 		header("Location: ../public/login.php?error=$em");
+		exit;
 	}
 
 	// 3. Verify password
 	if (!password_verify($password, $user_password)) {
 		$em = "Incorrect User name or password";
 		header("Location: ../public/login.php?error=$em");
+		exit;
 	}
 
 	// --- SUCCESS PATH ---
 	$_SESSION['user_id'] = $user_id;
 	$_SESSION['user_email'] = $user_email;
 	header("Location: ../admin/admin.php");
+	exit;
 
 }else {
 	# Redirect to "../public/login.php"
 	header("Location: ../public/login.php");
+	exit;
 }
 
