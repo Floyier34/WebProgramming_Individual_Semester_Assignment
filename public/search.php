@@ -15,7 +15,7 @@ if ($page < 1) {
 $per_page = 8;
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 # Device helper function
 include "../php/func-device.php";

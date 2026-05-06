@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/xml; charset=utf-8");
 
-include "../db_conn.php";
+include "../config/db_conn.php";
 include "../php/func-device.php";
 include "../php/func-category.php";
 include "../php/func-brand.php";

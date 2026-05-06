@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id']) &&
 	$id = $_GET['id'];
 
 	# Database Connection File
-	include "../db_conn.php";
+	include "../config/db_conn.php";
 
     # Category helper function
 	include "../php/func-category.php";

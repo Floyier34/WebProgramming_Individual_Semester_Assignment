@@ -4,7 +4,7 @@ session_start();
 header('Content-Type: application/json');
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 # Device helper function
 include "func-device.php";

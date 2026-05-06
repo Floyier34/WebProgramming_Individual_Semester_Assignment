@@ -14,7 +14,7 @@ if (!isset($_GET['id'])) {
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 /** 
 Get data from GET request 
@@ -29,7 +29,7 @@ if (empty($id)) {
     exit;
 }
 
-// TODO: Prevent deleting a brand that still has devices.
+// Prevent deleting a brand that still has devices.
 # DELETE the brand from Database
 $sql  = "DELETE FROM brands WHERE id=?";
 $stmt = $conn->prepare($sql);

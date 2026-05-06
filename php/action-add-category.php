@@ -14,7 +14,7 @@ if (!isset($_POST['category_name'])) {
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 /** 
 Get data from POST request 
@@ -29,7 +29,7 @@ if (empty($name)) {
     exit;
 }
 
-// TODO: Enforce unique category names at the database level.
+// Enforce unique category names at the database level.
 # Insert Into Database
 $sql  = "INSERT INTO categories (name) VALUES (?)";
 $stmt = $conn->prepare($sql);

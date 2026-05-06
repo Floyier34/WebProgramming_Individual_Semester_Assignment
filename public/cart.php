@@ -2,7 +2,7 @@
 session_start();
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 # Device helper function
 include "../php/func-device.php";
@@ -52,7 +52,6 @@ $active_page = 'cart';
     <meta property="twitter:description" content="View your cart contents at Online Electronics Store and prepare for checkout on the best electronics, laptops, phones, and accessories.">
     <meta property="twitter:image" content="../img/store-banner.jpg">
 
-    <!-- //TODO: Google Fonts Poppins - matching login form typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- bootstrap 5 CDN-->

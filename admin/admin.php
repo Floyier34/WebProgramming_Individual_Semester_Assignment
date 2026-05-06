@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 	# device helper function
 	include "../php/func-device.php";

@@ -14,7 +14,7 @@ if (!isset($_POST['brand_name']) || !isset($_POST['brand_id'])) {
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 /** 
 Get data from POST request 

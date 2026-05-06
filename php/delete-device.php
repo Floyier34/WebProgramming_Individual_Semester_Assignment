@@ -14,7 +14,7 @@ if (!isset($_GET['id'])) {
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 /** 
 Get data from GET request 
@@ -41,7 +41,7 @@ if ($stmt2->rowCount() === 0) {
     exit;
 }
 
-// TODO: Consider soft delete and handle missing files gracefully.
+// Consider soft delete and handle missing files gracefully.
 # DELETE the device from Database
 $sql  = "DELETE FROM devices WHERE id=?";
 $stmt = $conn->prepare($sql);

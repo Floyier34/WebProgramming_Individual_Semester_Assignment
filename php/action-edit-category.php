@@ -14,7 +14,7 @@ if (!isset($_POST['category_name']) || !isset($_POST['category_id'])) {
 }
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 /** 
 Get data from POST request 

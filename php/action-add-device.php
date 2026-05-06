@@ -22,7 +22,7 @@ if (!isset($_POST['device_name']) ||
 }
 
 # Database and Helper Functions
-include "../db_conn.php";
+include "../config/db_conn.php";
 include "func-validation.php";
 include "func-file-upload.php";
 
@@ -83,7 +83,7 @@ if ($file['status'] == "error") {
 $file_URL = $file['data'];
 $device_image_URL = $device_image['data'];
 
-// TODO: Validate brand_id and category_id exist before insert.
+// Validate brand_id and category_id exist before insert.
 
 # Insert the data into database
 $sql  = "INSERT INTO devices (name, price, short_description, brand_id, description, category_id, image, file)

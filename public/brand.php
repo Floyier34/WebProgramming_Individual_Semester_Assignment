@@ -11,7 +11,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 # Device helper function
 include "../php/func-device.php";
@@ -139,7 +139,7 @@ $active_page = 'store';
 			</a>
 		   <?=$current_brand['name']?>
 		</h1>
-		<div class="brand-sort-controls">
+		<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
 			<form method="get" class="d-flex align-items-center gap-2">
 				<input type="hidden" name="id" value="<?=$id?>">
 				<label class="form-label mb-0">Sort</label>

@@ -25,7 +25,7 @@ if (!isset($_POST['device_id']) ||
 }
 
 # Database and Helper Functions
-include "../db_conn.php";
+include "../config/db_conn.php";
 include "func-validation.php";
 include "func-file-upload.php";
 
@@ -67,7 +67,7 @@ $has_new_file = !empty($_FILES['file']['name']);
 $device_image_URL = $current_image;
 $file_URL = $current_file;
 
-// TODO: Consider wrapping file operations and DB updates in a transaction.
+// Consider wrapping file operations and DB updates in a transaction.
 
 # Handle Image Upload
 if ($has_new_image) {

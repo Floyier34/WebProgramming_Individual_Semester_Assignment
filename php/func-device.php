@@ -96,7 +96,7 @@ function get_device($con, $id){
 }
 
 
-// TODO: Consider full-text indexes for name/brand/category search as data grows.
+// Consider full-text indexes for name/brand/category search as data grows.
 # Search devices function
 function search_devices($con, $key){
    # creating simple search algorithm :) 

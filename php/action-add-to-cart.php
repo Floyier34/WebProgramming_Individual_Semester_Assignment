@@ -11,7 +11,7 @@ $id = (int) $_GET['id'];
 $redirect = isset($_GET['redirect']) ? trim($_GET['redirect']) : "";
 
 # Database Connection File
-include "../db_conn.php";
+include "../config/db_conn.php";
 
 # Device helper function
 include "func-device.php";

@@ -5,5 +5,5 @@ Disallow: /php/
 Disallow: /login-register/
 Disallow: /public/cart.php
 Disallow: /public/buy.php
-
+Disallow: /config
 # When deploying to production, replace with your live absolute URL: Sitemap: https://yourwebsite.com/public/sitemap.php
