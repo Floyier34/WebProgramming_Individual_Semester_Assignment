@@ -88,7 +88,7 @@ $active_page = $active_page ?? '';
   let debounceTimer;
 
   input.addEventListener('input', function () {
-    clearTimeout(debounceTimer);
+    //clearTimeout(debounceTimer);
     const query = input.value.trim();
     if (query.length < 2) {
       resultsBox.innerHTML = '';
